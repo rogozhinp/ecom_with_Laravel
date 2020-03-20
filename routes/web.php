@@ -15,8 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/info', function () {
+Route::get('info', function () {
     return view('php-info');
 });
+
+
+Route::get('products', ["uses"=>"ProductsController@index"]);
 
 
