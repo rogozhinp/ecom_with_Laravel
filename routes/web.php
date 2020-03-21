@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('info', function () {
-    return view('php-info');
+Route::get('/test', function () {
+    return view('test');
 });
 
+Route::get('/john', function () {
+    return "John String";
+});
+
+Route::get('/array', function () {
+    $array = ["John", "Mathew", "Susan"];
+    return $array;
+});
 
 Route::get('products', ["uses"=>"ProductsController@index"]);
 
-
+Route::get('product/addToCart/{id}', ["uses"=>"ProductsController@addProductToCart", 'as'=>'AddToCartProduct']);

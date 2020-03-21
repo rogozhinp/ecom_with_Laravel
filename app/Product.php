@@ -11,8 +11,5 @@ class Product extends Model
         'name', 'description', 'image', 'price', 'type'
     ];
 
-    public function getPriceAttribute($value){
-        $newForm = "$".$value;
-        return $newForm;
-    }
+
 }
