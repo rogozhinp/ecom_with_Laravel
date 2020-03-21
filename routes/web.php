@@ -30,6 +30,6 @@ Route::get('/array', function () {
     return $array;
 });
 
-Route::get('products', ["uses"=>"ProductsController@index"]);
+Route::get('products', ["uses"=>"ProductsController@index", "as" => "allProducts"]);
 
 Route::get('product/addToCart/{id}', ["uses"=>"ProductsController@addProductToCart", 'as'=>'AddToCartProduct']);

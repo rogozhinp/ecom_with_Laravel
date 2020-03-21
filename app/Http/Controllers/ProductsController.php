@@ -31,7 +31,9 @@ class ProductsController extends Controller
         $cart->addItem($id, $product);
         $request->session()->put('cart', $cart);
 
-        dump($cart);
+       // dump($cart);
+
+        return redirect()->route("allProducts");
 
     }
 }
