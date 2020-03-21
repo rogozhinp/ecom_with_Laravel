@@ -2518,5 +2518,17 @@ h2.title {
 .contact-info .social-networks ul li a:hover{
   color: #FE980F;
 }
-
-
+/*Number of Products in cart*/
+.cart-with-numbers{
+              font-size: 10px;
+               font-weight:bold;
+               text-align:center;
+               color:white;
+               background: red;
+               border-radius:50%;
+               padding:4px;
+               position:relative;
+               left:-8px;
+               top:-10px;
+               opacity:0.9;
+}
