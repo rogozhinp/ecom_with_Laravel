@@ -91,8 +91,13 @@
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="{{route('cartProducts')}}"><i class="fa fa-shopping-cart"></i>@if(Session::has('cart'))<span class="cart-with-numbers">
                 {{Session::get('cart')->totalQuantity}}</span>@endif Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
-							</ul>
+
+                @if(Auth::check())
+								<li><a href="/login"><i class="fa fa-lock"></i> Profile</a></li>
+                @else
+                <li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
+                @endif
+						</ul>
 						</div>
 					</div>
 				</div>
