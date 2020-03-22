@@ -31,8 +31,8 @@
             <td>{{$product['type']}}</td>
             <td>${{$product['price']}}</td>
 
-            <td><a href="#" class="btn btn-primary">Edit Image</a></td>
-            <td><a href="#" class="btn btn-primary">Edit</a></td>
+            <td><a href="{{route('adminEditProductImageForm', ['id' => $product['id']])}}" class="btn btn-primary">Edit Image</a></td>
+            <td><a href="{{route('adminEditProductForm', ['id' => $product['id']])}}" class="btn btn-primary">Edit</a></td>
             <td><a href="#"  class="btn btn-warning">Remove</a></td>
 
 
