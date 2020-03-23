@@ -17,7 +17,7 @@ class ProductsController extends Controller
         1 =>["name"=>"Galaxy", "category"=>"tablets", "price" => 2000],
         2 =>["name" =>"Sony", "category"=>"TV", "price"=>3000]];*/
 
-        $products = DB::table('products')->get();
+        $products = Product::paginate(3);
 
         return view("allproducts", compact("products"));
     }
