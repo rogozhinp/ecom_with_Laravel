@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,3 +66,27 @@ Route::get('admin/createProductForm', ["uses"=>"Admin\AdminProductsController@cr
 
 // create new product
 Route::post('admin/sendCreateProductForm/', ["uses"=>"Admin\AdminProductsController@sendCreateProductForm", "as" => "adminUpdateProduct"]);
+
+
+// delete products
+Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProduct", "as" => "adminDeleteProduct"]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
