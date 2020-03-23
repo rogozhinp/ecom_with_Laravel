@@ -58,4 +58,17 @@ class AdminProductsController extends Controller
             return $error;
         }
     }
+
+    public function updateProduct(Request $request, $id){
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $type = $request->input('type');
+        $price = $request->input('price');
+
+        $arrayToUpdate = array("name" =>$name, "description"=>$description, "type"=>$type, "price"=>$price);
+
+        DB::table('products')->where('id', $id)->update($arrayToUpdate);
+
+        return redirect()->route("adminDisplayProducts");
+    }
 }
