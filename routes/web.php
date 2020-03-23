@@ -31,7 +31,14 @@ Route::get('/array', function () {
     return $array;
 });
 
+// show all products
 Route::get('products', ["uses"=>"ProductsController@index", "as" => "allProducts"]);
+
+// Men
+Route::get('products/men', ["uses"=>"ProductsController@menProducts", "as" => "menProducts"]);
+
+// Women
+Route::get('products/women', ["uses"=>"ProductsController@womenProducts", "as" => "womenProducts"]);
 
 Route::get('product/addToCart/{id}', ["uses"=>"ProductsController@addProductToCart", "as"=>"AddToCartProduct"]);
 
