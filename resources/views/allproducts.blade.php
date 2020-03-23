@@ -278,8 +278,8 @@
 
                                             {{$product->id}}
 
-                                            {{Storage::disk('local')->url('product_images/'.$product->image)}}
-                                            <img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt=""/>
+                                            {{Storage::disk('local')->url('public/product_images/'.$product->image)}}
+                                            <img src="{{Storage::disk('local')->url('public/product_images/'.$product->image)}}" alt="{{$product->name}}"/>
                                             <h2>{{$product->price}}</h2>
                                             <p>{{$product->name}}</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
