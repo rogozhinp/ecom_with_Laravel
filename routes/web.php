@@ -67,8 +67,11 @@ Route::post('admin/sendCreateProductForm/', ["uses"=>"Admin\AdminProductsControl
 // delete products
 Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProduct", "as" => "adminDeleteProduct"]);
 
+// increase single product in cart
+Route::get('product/increaseSingleProductInCart/{id}', ['uses'=>'ProductsController@increaseSingleProductInCart', 'as'=>'IncreaseSingleProductInCart']);
 
-
+// Decrease single product in cart
+Route::get('product/decreaseSingleProductInCart/{id}', ['uses'=>'ProductsController@decreaseSingleProductInCart', 'as'=>'DecreaseSingleProductInCart']);
 
 
 
