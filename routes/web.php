@@ -14,22 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/test', function () {
-    return view('test');
-});
-
-Route::get('/john', function () {
-    return "John String";
-});
-
-Route::get('/array', function () {
-    $array = ["John", "Mathew", "Susan"];
-    return $array;
-});
+Route::get('/', ["uses"=>"ProductsController@index", "as" => "allProducts"]);
 
 // show all products
 Route::get('products', ["uses"=>"ProductsController@index", "as" => "allProducts"]);
@@ -39,6 +24,10 @@ Route::get('products/men', ["uses"=>"ProductsController@menProducts", "as" => "m
 
 // Women
 Route::get('products/women', ["uses"=>"ProductsController@womenProducts", "as" => "womenProducts"]);
+
+// Search
+Route::get('search', ["uses"=>"ProductsController@search", "as" => "searchProducts"]);
+
 
 Route::get('product/addToCart/{id}', ["uses"=>"ProductsController@addProductToCart", "as"=>"AddToCartProduct"]);
 
