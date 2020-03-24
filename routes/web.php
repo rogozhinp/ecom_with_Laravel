@@ -73,7 +73,8 @@ Route::get('product/increaseSingleProductInCart/{id}', ['uses'=>'ProductsControl
 // Decrease single product in cart
 Route::get('product/decreaseSingleProductInCart/{id}', ['uses'=>'ProductsController@decreaseSingleProductInCart', 'as'=>'DecreaseSingleProductInCart']);
 
-
+// Create an Order
+Route::get('product/createOrder/', ['uses'=>'ProductsController@createOrder', 'as'=>'createOrder']);
 
 
 
