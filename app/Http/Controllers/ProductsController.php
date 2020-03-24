@@ -145,11 +145,54 @@ class ProductsController extends Controller
         }
     }
 
-    public function checkoutProducts(){
+    public function checkoutProducts()
+
+    {
 
       return view('checkoutProducts');
 
     }
+
+    public function createNewOrder(Request $request)
+
+    {
+
+      $cart = Session::get('cart');
+      $first_name = $request->input('first_name');
+      $address = $request->input('address');
+      $last_name = $request->input('last_name');
+      $zip = $request->input('zip');
+      $phone = $request->input('phone');
+      $email = $request->input('email');
+
+      if($cart){
+        $date = date('Y-m-d H:i:s');
+        $newOrderArray = array("status"=>"on_hold", "data"=>$date, "del date"=>$date,"price"=>$cart->totalPrice,
+      "first_name"=>$first_name, "address"=>$address, "last_name"=>$last_name, "zip"=>$zip, "email"=>$email, "phone"=>$phone);
+
+      $created_order = DB::table("orders")->insert($newOrderArray);
+      $order_id = DB::getPdo()->lastInsertId();
+
+      foreach ($cart->items as $cart_item) {
+        $item_id = $cart_item['data']['id'];
+        $item_name = $cart_item['data']['name'];
+        $item_price = $cart_item['data']['price'];
+        $newItemsInCurrentOrder = array("item_id"=>$item_id, "order_id"=>$order_id, "item_name"=>$item_name,
+      "item_price"=>$item_price);
+      $created_order_items = DB::table("order_items")->insert($newItemsInCurrentOrder);
+      }
+
+      Session::forget("cart");
+      Session::flush();
+
+      print_r($newOrderArray);
+
+    }else{
+      print_r('error');
+    }
+
+      }
+
 
 
 

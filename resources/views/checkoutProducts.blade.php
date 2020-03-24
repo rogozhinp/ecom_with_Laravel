@@ -29,7 +29,7 @@
                         <div class="bill-to">
                             <p> Shipping/Bill To</p>
                             <div class="form-one">
-                                <form action="/createNewOrder" method="post">
+                                <form action="{{route('createNewOrder')}}" method="post">
 
 
 

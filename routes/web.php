@@ -78,3 +78,6 @@ Route::get('product/createOrder/', ['uses'=>'ProductsController@createOrder', 'a
 
 // Checkout Page
 Route::get('product/checkoutProducts/', ['uses'=>'ProductsController@checkoutProducts', 'as'=>'checkoutProducts']);
+
+// Proccess checkout page
+Route::post('product/createNewOrder/', ['uses'=>'ProductsController@createNewOrder', 'as'=>'createNewOrder']);
