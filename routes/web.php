@@ -76,17 +76,5 @@ Route::get('product/decreaseSingleProductInCart/{id}', ['uses'=>'ProductsControl
 // Create an Order
 Route::get('product/createOrder/', ['uses'=>'ProductsController@createOrder', 'as'=>'createOrder']);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Checkout Page
+Route::get('product/checkoutProducts/', ['uses'=>'ProductsController@checkoutProducts', 'as'=>'checkoutProducts']);

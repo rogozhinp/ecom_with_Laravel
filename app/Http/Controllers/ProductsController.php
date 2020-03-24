@@ -117,17 +117,17 @@ class ProductsController extends Controller
         return redirect()->route("cartProducts");
 
     }
-    
+
     public function createOrder(){
         $cart = Session::get('cart');
-        
+
         // cart is not empty
         if($cart){
             $date = date('Y-m-d H:i:s');
             $newOrderArray = array("status"=>"on_hold","data"=>$date, "del date"=>$date,"price"=>$cart->totalPrice);
             $created_order = DB::table("orders")->insert($newOrderArray);
             $order_id = DB::getPdo()->lastInsertId();
-            
+
             foreach ($cart->items as $cart_item){
                 $item_id = $cart_item['data']['id'];
                 $item_name= $cart_item['data']['name'];
@@ -135,7 +135,7 @@ class ProductsController extends Controller
                 $newItemsInCurrentOrder = array("item_id"=>$item_id, "order_id"=>$order_id, "item_name"=>$item_name, "item_price"=>$item_price);
                 $created_order_items = DB::table("order_items")->insert($newItemsInCurrentOrder);
             }
-            
+
             // delete cart
             Session::forget("cart");
             Session::flush();
@@ -144,41 +144,47 @@ class ProductsController extends Controller
             return redirect()->route("allProducts");
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public function checkoutProducts(){
+
+      return view('checkoutProducts');
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
