@@ -81,3 +81,6 @@ Route::get('product/checkoutProducts/', ['uses'=>'ProductsController@checkoutPro
 
 // Proccess checkout page
 Route::post('product/createNewOrder/', ['uses'=>'ProductsController@createNewOrder', 'as'=>'createNewOrder']);
+
+// Payment page
+Route::get('payment/paymentpage', ["uses"=>"Payment\PaymentsController@showPaymentPage", 'as'=>'showPaymentPage']);

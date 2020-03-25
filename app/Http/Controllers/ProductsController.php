@@ -185,10 +185,13 @@ class ProductsController extends Controller
       Session::forget("cart");
       Session::flush();
 
-      print_r($newOrderArray);
+      $payment_info = $newOrderArray;
+      $request->session()->put('payment_info', $payment_info);
+
+      return redirect()->route("showPaymentPage");
 
     }else{
-      print_r('error');
+      return redirect()->route("allProducts");
     }
 
       }
