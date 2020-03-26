@@ -41,7 +41,7 @@
                                                         <li>Total <span>{{$payment_info['price']}}</span></li>
                                                     </ul>
                                                     <a class="btn btn-default update" href="">Update</a>
-                                                    <a class="btn btn-default check_out" id="paypal-button" href="">Pay Now</a>
+                                                    <a class="btn btn-default check_out" id="paypal-button" href=""se>Pay Now</a>
                                                 </div>
 
 
@@ -98,7 +98,7 @@
     // Configure environment
     env: 'sandbox',
     client: {
-      sandbox: 'YOUR_SANDBOX_CLIENT_ID',
+      sandbox: 'AX_joycb1Gux3tD7PkBxhDlVoEsZNvJaXRy0HDDQoj1KpUD0pA2S6bmR9LaCeR-BxqlQ03JhVqMwM7oI',
       production: 'YOUR_PRODUCTION_CLIENT_ID'
     },
     // Customize button (optional)

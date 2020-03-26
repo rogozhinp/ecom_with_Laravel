@@ -186,6 +186,7 @@ class ProductsController extends Controller
       Session::flush();
 
       $payment_info = $newOrderArray;
+      $payment_info['order_id'] = $order_id;
       $request->session()->put('payment_info', $payment_info);
 
       return redirect()->route("showPaymentPage");
