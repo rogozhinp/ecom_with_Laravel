@@ -7,6 +7,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -165,9 +166,18 @@ class ProductsController extends Controller
       $phone = $request->input('phone');
       $email = $request->input('email');
 
+      $isUserLoggedIn = Auth::check();
+
+      if($isUserLoggedIn){
+        $user_id = Auth::id();
+      }else{
+        // user is guest
+        $user_id = 0;
+      }
+
       if($cart){
         $date = date('Y-m-d H:i:s');
-        $newOrderArray = array("status"=>"on_hold", "data"=>$date, "del date"=>$date,"price"=>$cart->totalPrice,
+        $newOrderArray = array("user_id"=>$user_id, "status"=>"on_hold", "data"=>$date, "del date"=>$date,"price"=>$cart->totalPrice,
       "first_name"=>$first_name, "address"=>$address, "last_name"=>$last_name, "zip"=>$zip, "email"=>$email, "phone"=>$phone);
 
       $created_order = DB::table("orders")->insert($newOrderArray);
