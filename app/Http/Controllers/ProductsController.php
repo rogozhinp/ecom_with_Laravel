@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
+use App\Mail\OrderCreatedEmail;
+use Illuminate\Support\Facades\Mail;
+
 class ProductsController extends Controller
 {
     //
@@ -139,7 +142,6 @@ class ProductsController extends Controller
 
             // delete cart
             Session::forget("cart");
-            Session::flush();
             return redirect()->route("allProducts")->withsuccess("Thanks For Choosing Us");
         }else{
             return redirect()->route("allProducts");
@@ -208,7 +210,14 @@ class ProductsController extends Controller
       }
 
 
+      private function sendMail(){
+        $user = Auth::user();
+        $cart = Session::get('cart');
 
+        if($cart !=null && $user != null){
+          Mail::to($user)->send(new OrderCreatedMail($cart));
+        }
+      }
 
 
 
