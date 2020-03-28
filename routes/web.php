@@ -45,6 +45,9 @@ Route::post('admin/sendCreateProductForm/', ["uses"=>"Admin\AdminProductsControl
 // delete products
 Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProduct", "as" => "adminDeleteProduct"]);
 
+// orders control Panel
+Route::get('admin/deleteProduct/', ["uses" => "Admin\AdminProductsController@ordersPanel", "as" => "ordersPanel"]);
+
 });
 
 

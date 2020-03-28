@@ -117,4 +117,43 @@ class AdminProductsController extends Controller
 
         return redirect()->route("adminDisplayProducts");
     }
+
+
+    // orders control panel (display all orders)
+
+    public function ordersPanel(){
+      $orders = DB::table('orders')->paginate(10);
+      return view('admin.ordersPanel', ["orders" => $orders]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
