@@ -51,6 +51,12 @@ Route::get('admin/deleteProduct/', ["uses" => "Admin\AdminProductsController@ord
 // delete orders
 Route::get('admin/deleteOrder/{id}', ["uses"=>"Admin\AdminProductsController@deleteOrder", "as" => "adminDeleteOrder"]);
 
+// display edit order form
+Route::get('admin/editOrderForm/{id}', ["uses" => "Admin\AdminProductsController@editOrderForm", "as"=>"adminEditOrderForm"]);
+
+// update order data
+Route::post('admin/updateOrder/{id}', ["uses" => "Admin\AdminProductsController@updateOrder", "as"=>"adminUpdateOrder"]);
+
 });
 
 

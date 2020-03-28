@@ -137,6 +137,25 @@ class AdminProductsController extends Controller
       }
     }
 
+    // display edit order form
+    public function editOrderForm($id){
+      $order = DB::table('orders')->where("id", $id)->get();
+
+      return view('admin.editOrderForm', ['order'=>$order[0]]);
+    }
+
+    // update order fields
+
+    public function updateOrder(Request $request, $id){
+      $data = $request->input('data');
+      $status = $request->input('status');
+      $price = $request->input('price');
+
+      $updateArray = array("data"=>$data, "status"=>$status, "price"=>$price);
+
+      DB::table('orders')->where('id', $id)->update($updateArray);
+      return redirect()->route("ordersPanel");
+    }
 
 
 
