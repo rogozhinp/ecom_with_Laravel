@@ -98,7 +98,7 @@
 
             <td><a href="#" class="btn btn-primary">Edit</a></td>
 
-            <td><a href="#"
+            <td><a href="{{route('adminDeleteOrder', ['id' => $order->id])}}"
                 onclick="return confirm('Are you sure you want to delete this order?')"
             class="btn btn-warning">Remove</a></td>
 

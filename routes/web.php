@@ -48,6 +48,9 @@ Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@d
 // orders control Panel
 Route::get('admin/deleteProduct/', ["uses" => "Admin\AdminProductsController@ordersPanel", "as" => "ordersPanel"]);
 
+// delete orders
+Route::get('admin/deleteOrder/{id}', ["uses"=>"Admin\AdminProductsController@deleteOrder", "as" => "adminDeleteOrder"]);
+
 });
 
 

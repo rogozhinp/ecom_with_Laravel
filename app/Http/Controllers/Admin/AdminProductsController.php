@@ -126,7 +126,16 @@ class AdminProductsController extends Controller
       return view('admin.ordersPanel', ["orders" => $orders]);
     }
 
+    // delete Orders
+    public function deleteOrder(Request $request, $id){
+      $deleted = DB::table('orders')->where("id", $id)->delete();
 
+      if($deleted){
+        return redirect()->back()->with('orderDeletionStatus','Order'.$id.' was successfully deleted');
+      }else{
+        return redirect()->back()->with('orderDeletionStatus', 'Order'.$id.' was NOT deleted');
+      }
+    }
 
 
 
