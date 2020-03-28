@@ -16,6 +16,40 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', ["uses"=>"ProductsController@index", "as" => "allProducts"]);
 
+
+
+Route::group(['middleware' => ['restrictToAdmin']], function(){
+
+  // Admin panel
+Route::get('admin/products', ["uses"=>"Admin\AdminProductsController@index", "as" => "adminDisplayProducts"]);
+
+// display edit Product form
+Route::get('admin/editProductForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductForm", "as" => "adminEditProductForm"]);
+
+// display edit product image form
+Route::get('admin/editProductImageForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductImageForm", "as" => "adminEditProductImageForm"]);
+
+// update product image
+Route::post('admin/updateProductImage/{id}', ["uses"=>"Admin\AdminProductsController@updateProductImage", "as" => "adminUpdateProductImage"]);
+
+// update product data
+Route::post('admin/updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as" => "adminUpdateProduct"]);
+
+// display create Product form
+Route::get('admin/createProductForm', ["uses"=>"Admin\AdminProductsController@createProductForm", "as" => "adminEditProductForm"]);
+
+// create new product
+Route::post('admin/sendCreateProductForm/', ["uses"=>"Admin\AdminProductsController@sendCreateProductForm", "as" => "adminUpdateProduct"]);
+
+
+// delete products
+Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProduct", "as" => "adminDeleteProduct"]);
+
+});
+
+
+
+
 // show all products
 Route::get('products', ["uses"=>"ProductsController@index", "as" => "allProducts"]);
 
@@ -42,30 +76,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Admin panel
-Route::get('admin/products', ["uses"=>"Admin\AdminProductsController@index", "as" => "adminDisplayProducts"]);
 
-// display edit Product form
-Route::get('admin/editProductForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductForm", "as" => "adminEditProductForm"]);
-
-// display edit product image form
-Route::get('admin/editProductImageForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductImageForm", "as" => "adminEditProductImageForm"]);
-
-// update product image
-Route::post('admin/updateProductImage/{id}', ["uses"=>"Admin\AdminProductsController@updateProductImage", "as" => "adminUpdateProductImage"]);
-
-// update product data
-Route::post('admin/updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as" => "adminUpdateProduct"]);
-
-// display create Product form
-Route::get('admin/createProductForm', ["uses"=>"Admin\AdminProductsController@createProductForm", "as" => "adminEditProductForm"]);
-
-// create new product
-Route::post('admin/sendCreateProductForm/', ["uses"=>"Admin\AdminProductsController@sendCreateProductForm", "as" => "adminUpdateProduct"]);
-
-
-// delete products
-Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProduct", "as" => "adminDeleteProduct"]);
 
 // increase single product in cart
 Route::get('product/increaseSingleProductInCart/{id}', ['uses'=>'ProductsController@increaseSingleProductInCart', 'as'=>'IncreaseSingleProductInCart']);
