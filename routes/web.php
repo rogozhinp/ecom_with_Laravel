@@ -110,3 +110,9 @@ Route::get('payment/paymentpage', ["uses"=>"Payment\PaymentsController@showPayme
 
 // Proccess payment and receipt page
 Route::get('payment/paymentreceipt/{paymentID}/{payerID}', ["uses"=>"Payment\PaymentsController@showPaymentReceipt", "as"=>"showPaymentReceipt"]);
+
+// add to cart using ajax post request
+Route::get('products/addToCartAjaxPost', ["uses"=>"ProductsController@addToCartAjaxPost", "as"=>"AddToCartAjaxPost"]);
+
+// add to cart using get request
+Route::get('products/addToCartAjaxGet/{id}', ["uses"=>"ProductsController@addToCartAjaxGet", "as"=>"AddToCartAjaxGet"]);

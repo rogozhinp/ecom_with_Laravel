@@ -8,6 +8,8 @@
 @extends('layouts.index')
 
 @section('center')
+
+
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
             <div class="row">
@@ -55,11 +57,11 @@
         </div>
     </div><!--/header-bottom-->
     </header><!--/header-->
-	
+
 	<div class="container">
 		@include('alert')
 	</div>
-	
+
     <section id="slider"><!--slider-->
         <div class="container">
             <div class="row">
@@ -196,6 +198,8 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
 
+                                              {{csrf_field() }}
+
                                                 {{$product->id}}
 
                                                 {{Storage::disk('local')->url('public/product_images/'.$product->image)}}
@@ -211,9 +215,9 @@
                                                 <div class="overlay-content">
                                                     <h2>{{$product->price}}</h2>
                                                     <p>{{$product->name}}</p>
-                                                    <a href="{{route('AddToCartProduct', ['id'=>$product->id])}}"
-                                                       class="btn btn-default add-to-cart"><i
-                                                            class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <a href="#" class="ajaxGET btn btn-default add-to-cart">
+                                                      <div id="url" style="display:none">{{route('AddToCartAjaxGet', ['id'=>$product->id])}}</div>
+                                                      <i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -794,5 +798,29 @@
             </div>
         </div>
     </section>
-@endsection
 
+
+
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+      $('.ajaxGET').click(function(e){
+        e.preventDefault();
+        var url = $(this).find('#url').text();
+        var _token = $("input[name='_token']").val();
+        $.ajax({
+          method:"GET",
+          url:url,
+          data:{_token: _token},
+          success:function(data,status,XHR){
+            alert(data.cart);
+          },
+          error:function(xhr,status,error){
+            alert(error);
+          }
+        });
+      });
+    });
+
+    </script>
+@endsection
